@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="eng">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Ogani Template">
+    <meta name="keywords" content="Ogani, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>EcoBaams - Fashion</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="{% static "ecommerce/css/bootstrap.min.css" %}" type="text/css">
+    <link rel="stylesheet" href="{% static "ecommerce/css/font-awesome.min.css" %}" type="text/css">
+    <link rel="stylesheet" href="{% static "ecommerce/css/elegant-icons.css" %}" type="text/css">
+    <link rel="stylesheet" href="{% static "ecommerce/css/nice-select.css" %}" type="text/css">
+    <link rel="stylesheet" href="{% static "ecommerce/css/jquery-ui.min.css" %}" type="text/css">
+    <link rel="stylesheet" href="{% static "ecommerce/css/owl.carousel.min.css" %}" type="text/css">
+    <link rel="stylesheet" href="{% static "ecommerce/css/slicknav.min.css" %}" type="text/css">
+    <link rel="stylesheet" href="{% static "ecommerce/css/style.css" %}" type="text/css">
+</head>
+    
+<body>
+    <script>
+        function getCookie(name) {
+            var cookieValue = null;
+            if (document.cookie && document.cookie !== "") {
+                var cookies = document.cookie.split(";");
+                for (var i = 0; i < cookies.length; i++) {
+                var cookie = cookies[i].trim();
+                // Check if this cookie string begins with the name we want
+                if (cookie.substring(0, name.length + 1) === name + "=") {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+                }
+            }
+            return cookieValue;
+            }
+
+            const token = getCookie("csrftoken");
+
+    </script>
+    <!-- Page Preloder -->
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+    <!-- Header Section Begin -->
+    <header class="header">
+        <div class="header__top">
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="header__logo">
+                        <a href="{% url "feed" %}"><img width="50%" src="{% static "ecommerce/img/logo3.png" %}" alt=""></a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <nav class="header__menu">
+                        <ul>
+                            <li class="active"><a href="{% url "feed" %}">Home</a></li>
+                            <li><a href="{% url "shop" %}">Shop</a></li>
+                            <li><a href="#">Pages</a>
+                                <ul class="header__menu__dropdown">
+                                    <li><a href="{% url "bags" %}">Bags</a></li>
+                                    <li><a href="{% url "cart" %}">Shoping Cart</a></li>
+                                    <li><a href="{% url "shoes" %}">Shoes</a></li>
+                                </ul>
+                                <li><a href="{% url "checkout" %}">Check Out</a></li>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="col-lg-3">
+                    <div class="header__cart">
+                        <ul>
+                            <li><a href="{% url "cart" %}"><i class="fa fa-shopping-bag"></i> <span></span></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="humberger__open">
+                <i class="fa fa-bars"></i>
+            </div>
+        </div>
+    </header>
+    <!-- Header Section End -->
+
+    <!-- Hero Section Begin -->
+    <section class="hero">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="hero__categories">
+                        <div class="hero__categories__all">
+                            <i class="fa fa-bars"></i>
+                            <span>All departments</span>
+                        </div>
+                        <ul>
+                            <li><b><a href="{% url "bags" %}">Bags</a></b></li>
+                            <li>Backpack/Rucksack</li>
+                            <li>Messenger Bag</li>
+                            <li>Clutch</li>
+                            <li>Crossbody Bag</li>
+                            <li>Fanny Pack/Waist Bag</li>
+                            
+                            <li><b><a href="{% url "shoes" %}">FootWares</a></b></li>
+                             <li>Athletic Shoes</li>
+                            <li>Boots</li>
+                            <li>Loafers</li>
+                            <li>Sneakers</li>
+                            <li>Sandals</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-9">
+                    <div class="hero__search">
+                        <div class="hero__search__form">
+                            <form action="#">
+                                <div class="hero__search__categories">
+                                    All Categories
+                                    <span class="arrow_carrot-down"></span>
+                                </div>
+                                <input type="text" placeholder="What do yo u need?">
+                                <button type="submit" class="site-btn">SEARCH</button>
+                            </form>
+                        </div>
+                        <div class="hero__search__phone">
+                            <div class="hero__search__phone__icon">
+                                <i class="fa fa-phone"></i>
+                            </div>
+                            <div class="hero__search__phone__text">
+                                <h5>+234 814 367 2539</h5>
+                                <span>support 24/7 time</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hero__item set-bg" data-setbg="{% static "recycling/images/p18.png" %}">
+                        <div class="hero__text">
+                            <span>sleek and lightweight</span>
+                            <h2>Perfect <br />100% daily comfort</h2>
+                            <p> Pickup and Delivery Available</p>
+                            <a href="#" class="primary-btn">BUY NOW</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Hero Section End -->
+
+    <!-- Categories Section Begin -->
+    <section class="categories">
+        <div class="container">
+            <div class="row">
+                <div class="categories__slider owl-carousel">
+                    {% for 4product in 4_product %}
+                    <div class="col-lg-3">
+                        <div class="categories__item set-bg" data-setbg={{4product.get_image}}>
+                            <h5><a href="{% url "product_details" id=4product.id %}">{{4product.name}}</a></h5>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Categories Section End -->
+
+    <!-- Featured Section Begin -->
+    <section class="featured spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-title">
+                        <h2>Featured Product</h2>
+                    </div>
+                    <div class="featured__controls">
+                        <ul>
+                            <li class="active" data-filter="*">All</li>
+                            <li data-filter=".SHOES">shoes</li>
+                            <li data-filter=".BAGS">bags</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="row featured__filter">
+                
+                {% for products in product %}
+                <div class="col-lg-3 col-md-4 col-sm-6 mix {{products.category}}">
+                    <div class="featured__item">
+                        <div class="featured__item__pic set-bg" data-setbg="{{products.get_image}}">
+                            <ul class="featured__item__pic__hover">
+                                <li><a data-product="{{products.id}}" data-action="add" class="update_cart"><i class="fa fa-shopping-cart"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="featured__item__text">
+                            <h6>{{products.name}}</h6>
+                            <h5>#{{products.price}}</h5>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+
+            </div>
+        </div>
+    </section>
+    <!-- Featured Section End -->
+
+    <!-- Banner Begin -->
+    <div class="banner">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-6">
+                    <div class="banner__pic">
+                        <img src="img/banner/banner-1.jpg" alt="">
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6">
+                    <div class="banner__pic">
+                        <img src="img/banner/banner-2.jpg" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Banner End -->
+
+    <!-- Latest Product Section Begin -->
+    <section class="latest-product spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                    <div class="latest-product__text">
+                        <h4>Latest Products</h4>
+                        <div class="latest-product__slider owl-carousel">
+                            <div class="latest-prdouct__slider__item">
+                                 {% for latest in newest_products|slice:"3:6" %}              
+                                <a href='{% url "product_details" id=latest.id %}' class="latest-product__item update_cart">
+                                    <div class="latest-product__item__pic">
+                                        <img src="{{latest.get_image}}" alt="">
+                                    </div>
+                                    <div class="latest-product__item__text">
+                                        <h6>{{latest.name}}</h6>
+                                        <span>#{{latest.price}}</span>
+                                    </div>
+                                </a>
+                                {% endfor %}
+                            </div>
+                            <div class="latest-prdouct__slider__item">
+                                {% for latest in newest_products|slice:"0:3" %}              
+                                <a href="{% url "product_details" id=latest.id %}" class="latest-product__item update_cart">
+                                    <div class="latest-product__item__pic">
+                                        <img src="{{latest.get_image}}" alt="">
+                                    </div>
+                                    <div class="latest-product__item__text">
+                                        <h6>{{latest.name}}</h6>
+                                        <span>#{{latest.price}}</span>
+                                    </div>
+                                </a>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="latest-product__text">
+                        <h4>Shoes</h4>
+                        <div class="latest-product__slider owl-carousel">
+                            <div class="latest-prdouct__slider__item">
+                                {% for males in male|slice:"0:3"  %}     
+                                <a href="{% url "product_details" id=males.id %}" data-product="{{males.id}}" data-action="add" class="latest-product__item update_cart">
+                                    <div class="latest-product__item__pic">
+                                        <img src="{{males.get_image}}" alt="">
+                                    </div>
+                                    <div class="latest-product__item__text">
+                                        <h6>{{males.name}}</h6>
+                                        <span>{{males.price}}</span>
+                                    </div>
+                                </a>
+                                {% endfor %}
+                            </div>
+                            <div class="latest-prdouct__slider__item">
+                                {% for males in male|slice:"3:6"%}
+                                <a href="{% url "product_details" id=males.id %}" data-product="{{males.id}}" data-action="add" class="latest-product__item update_cart">
+                                    <div class="latest-product__item__pic">
+                                        <img src="{{males.get_image}}" alt="">
+                                    </div>
+                                    <div class="latest-product__item__text">
+                                        <h6>{{males.name}}</h6>
+                                        <span>#{{males.price}}</span>
+                                    </div>
+                                    {% endfor %}
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="latest-product__text">
+                        <h4>Bags</h4>
+                        <div class="latest-product__slider owl-carousel">
+                            <div class="latest-prdouct__slider__item">
+                                {% for males in classic|slice:"0:3"  %}     
+                                <a href="{% url "product_details" id=males.id %}" data-product="{{males.id}}" data-action="add" class="latest-product__item update_cart">
+                                    <div class="latest-product__item__pic">
+                                        <img src="{{males.get_image}}" alt="">
+                                    </div>
+                                    <div class="latest-product__item__text">
+                                        <h6>{{males.name}}</h6>
+                                        <span>{{males.price}}</span>
+                                    </div>
+                                </a>
+                                {% endfor %}
+                            </div>
+                            <div class="latest-prdouct__slider__item">
+                                {% for males in classic|slice:"3:6"%}
+                                <a href="{% url "product_details" id=males.id %}" data-product="{{males.id}}" data-action="add" class="latest-product__item update_cart">
+                                    <div class="latest-product__item__pic">
+                                        <img src="{{males.get_image}}" alt="">
+                                    </div>
+                                    <div class="latest-product__item__text">
+                                        <h6>{{males.name}}</h6>
+                                        <span>#{{males.price}}</span>
+                                    </div>
+                                    {% endfor %}
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Latest Product Section End -->
+
+    <!-- Footer Section Begin -->
+    <footer class="footer spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="footer__about">
+                        <div class="footer__about__logo">
+                            <a href="./index.html"><img src="img/logo.png" alt=""></a>
+                        </div>
+                        <ul>
+                            <li>Address: No 8 Fadeyi street, Bodija, Ibadan, Oyo state.</li>
+                            <li>Phone: +234 814 367 2539</li>
+                            <li>Email:  ecobaamsafrica.green@gmail.com</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6 offset-lg-1">
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="footer__copyright">
+                        <div class="footer__copyright__text"><p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved EcoBaams Fashion<a Style="opacity: 0;" href="https://colorlib.com" target="_blank">Colorlib</a>
+  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p></div>
+                        <div class="footer__copyright__payment"><img src="img/payment-item.png" alt=""></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer Section End -->
+
+    <!-- Js Plugins -->
+    <script src="{% static "ecommerce/js/jquery-3.3.1.min.js" %}"></script>
+    <script src="{% static "ecommerce/js/bootstrap.min.js" %}"></script>
+    <script src="{% static "ecommerce/js/jquery.nice-select.min.js" %}"></script>
+    <script src="{% static "ecommerce/js/jquery-ui.min.js" %}"></script>
+    <script src="{% static "ecommerce/js/jquery.slicknav.js" %}"></script>
+    <script src="{% static "ecommerce/js/mixitup.min.js" %}"></script>
+    <script src="{% static "ecommerce/js/owl.carousel.min.js" %}"></script>
+    <script src="{% static "ecommerce/js/main.js" %}"></script>
+    <script src="{% static "ecommerce/js/cart.js" %}"></script>
+
+<script>
+  
+</script>
+
+</body>
+</html>
