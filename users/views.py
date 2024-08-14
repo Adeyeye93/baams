@@ -9,8 +9,6 @@ def sign_up(req):
         email = req.POST['email']
         password = req.POST['pass']
 
-        if User.objects.get():
-            pass
         new_user = User.objects.create_user(username, email, password)
         new_user.save()
         login_user = authenticate(username=username, password=password)
