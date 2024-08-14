@@ -10,7 +10,7 @@ pillow = "*"
 psycopg = "*"
 gunicorn = "*"
 dj-database-url = "*"
-python_version = "3.10"
+python_version = "3.9"
 
 [dev-packages]
 
