@@ -23,7 +23,6 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include("recycling.url")),
-    path('shop/', include("ecommerce.urls")),
     path('auth/', include("users.urls")),
 ]
 

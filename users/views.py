@@ -14,7 +14,7 @@ def sign_up(req):
         login_user = authenticate(username=username, password=password)
         if login_user is not None:
             auth_login(req, login_user)
-            return redirect('feed')
+            return redirect('Recycles')
         else:
             return redirect('register')
     return render(req, "users/index.html")
@@ -29,7 +29,7 @@ def login(req):
         login_user = authenticate(username=username, password=password)
         if login_user is not None:
             auth_login(req, login_user)
-            return redirect('feed')
+            return redirect('Recycles')
         else:
             return redirect('login')
     return render(req, "users/login.html")

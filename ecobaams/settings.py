@@ -39,7 +39,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'recycling.apps.RecyclingConfig',
-    'ecommerce.apps.EcommerceConfig',
     'users.apps.UsersConfig',
     'multiselectfield'
     
