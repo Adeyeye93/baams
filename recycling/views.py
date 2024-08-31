@@ -20,6 +20,7 @@ def make_trash_request(request):
 
     user = request.user
     trash_requests = TrashRequest.objects.filter(user=user)
+    all_trash = TrashRequest.objects.all()
     total_requests = {
         'Nylon': trash_requests.filter(trash_type='Nylon').count(),
         'Bottle': trash_requests.filter(trash_type='Bottle').count(),
@@ -27,7 +28,8 @@ def make_trash_request(request):
     }
     total_points = sum(trash_request.points for trash_request in trash_requests if trash_request.points is not None)
     total_weight = sum(trash_request.weight for trash_request in trash_requests if trash_request.weight is not None)
-    return render(request, 'recycling/dashboard.html', {'form': form, 'total_requests': total_requests, "total_points": total_points, 'total_weight': total_weight})
+
+    return render(request, 'recycling/dashboard.html', {'form': form, 'total_requests': total_requests, "total_points": total_points, 'total_weight': total_weight, "all_trash": all_trash})
 
 def impact(req):
     
