@@ -5,3 +5,4 @@ from .models import *
 
 
 admin.site.register(TrashRequest)
+admin.site.register(FundRequest)

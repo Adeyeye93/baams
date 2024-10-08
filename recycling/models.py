@@ -16,3 +16,28 @@ class TrashRequest(models.Model):
     weight = models.IntegerField(null=True, blank=True)
     points = models.IntegerField(null=True, blank=True)
     trash_type = models.CharField(null=False, blank=True, default="", max_length=20)
+    total_fund = models.IntegerField(default=0.0)
+    withdrawn_fund = models.IntegerField(default=0.0)
+
+
+
+class FundRequest(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    CHOICES = [
+        ("Health", "Health Care Need"),
+        ("School", "Educational Need"),
+        ("EcoFashion", "Eco Fashion"),
+        ("EcoFashion", "Eco Fashion"),
+        ("MTN Airtime", "MTN Airtime"),
+        ("GLO Airtime", "GLO Airtime"),
+        ("AirTel Airtime", "AirTel Airtime"),
+        ("9Mobile Airtime", "9Mobile Airtime"),
+        ("MTN Data", "MTN Data"),
+        ("GLO Data", "GLO Data"),
+        ("AirTel Data", "AirTel Data"),
+        ("9Mobile Data", "9Mobile Data"),
+    ]
+    withdraw_type = MultiSelectField(choices=CHOICES, max_choices=2, max_length=100, default="")
+    request_date = models.DateTimeField(auto_now_add=True)
+    disbursed = models.BooleanField(default=False)
