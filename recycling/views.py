@@ -28,12 +28,44 @@ def make_trash_request(request):
     }
     total_points = sum(trash_request.points for trash_request in trash_requests if trash_request.points is not None)
     total_weight = sum(trash_request.weight for trash_request in trash_requests if trash_request.weight is not None)
+    fund = sum(trash_request.total_fund for trash_request in trash_requests if trash_request.total_fund is not None)
+    withdrawn = sum(trash_request.withdrawn_fund for trash_request in trash_requests if trash_request.withdrawn_fund is not None)
+    total_fund = fund - withdrawn
 
-    return render(request, 'recycling/dashboard.html', {'form': form, 'total_requests': total_requests, "total_points": total_points, 'total_weight': total_weight, "all_trash": trash_requests})
+    return render(request, 'recycling/dashboard.html', {'form': form, 'total_requests': total_requests, "total_points": total_points, 'total_weight': total_weight, "all_trash": trash_requests, "withdrawn": withdrawn, "total_fund": total_fund, "fund": fund})
+
+@login_required
+def request(request):
+    if request.method == 'POST':
+        form = TrashRequestForm(request.POST)
+        if form.is_valid():
+            trash_request = form.save(commit=False)
+            trash_request.user = request.user
+            trash_request.save()
+            return redirect('request')  
+    else:
+        form = TrashRequestForm()
+
+    user = request.user
+    trash_requests = TrashRequest.objects.filter(user=user)
+    all_trash = TrashRequest.objects.all()
+    total_requests = {
+        'Nylon': trash_requests.filter(trash_type='Nylon').count(),
+        'Bottle': trash_requests.filter(trash_type='Bottle').count(),
+        'Plastic': trash_requests.filter(trash_type='Plastic').count(),
+    }
+    total_points = sum(trash_request.points for trash_request in trash_requests if trash_request.points is not None)
+    total_weight = sum(trash_request.weight for trash_request in trash_requests if trash_request.weight is not None)
+    fund = sum(trash_request.total_fund for trash_request in trash_requests if trash_request.total_fund is not None)
+    withdrawn = sum(trash_request.withdrawn_fund for trash_request in trash_requests if trash_request.withdrawn_fund is not None)
+    total_fund = fund - withdrawn
+
+    return render(request, 'recycling/request.html', {'form': form, 'total_requests': total_requests, "total_points": total_points, 'total_weight': total_weight, "all_trash": trash_requests, "withdrawn": withdrawn, "total_fund": total_fund, "fund": fund})
 
 def impact(req):
     
     return render(req, 'recycling/blog_list.html')
+
 
 def about(req):
    

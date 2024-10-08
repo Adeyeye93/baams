@@ -99,7 +99,7 @@
               ></span>
               <a
                 class="inline-flex items-center w-full text-sm font-semibold text-gray-800 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 dark:text-gray-100"
-                href="index.html"
+                href="{% url "dashboard" %}"
               >
                 <svg
                   class="w-5 h-5"
@@ -123,7 +123,7 @@
             <li class="relative px-6 py-3">
               <a
                 class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-                href="#make_request">
+                href="{% url "request" %}">
                 <svg
                   class="w-5 h-5"
                   aria-hidden="true"
@@ -482,11 +482,11 @@
                 ECOBAAMSAFRICA CUSTOMER DASHBOARD
               </div>
             </div>
-            <ul class="flex items-center flex-shrink-0 space-x-6">
+            <ul class="flex items-center justify-between w-20 space-x-6">
               <!-- Theme toggler -->
-              <li class="flex">
+              <li class="flex items-center justify-between gap-6">
                 <button
-                  class="rounded-md focus:outline-none focus:shadow-outline-purple"
+                  class="rounded-md gap-6 focus:outline-none focus:shadow-outline-purple"
                   @click="toggleTheme"
                   aria-label="Toggle color mode"
                 >
@@ -517,6 +517,11 @@
                     </svg>
                   </template>
                 </button>
+                <button class="rounded-md focus:outline-none focus:shadow-outline-purple">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-whatsapp" viewBox="0 0 16 16">
+                <path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"/>
+              </svg>
+                </button>
               </li>
               <!-- Notifications menu -->
               <!-- Profile menu -->
@@ -545,7 +550,7 @@
                     d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
                   ></path>
                 </svg>
-                <span>Hello, Please Note That It might take upto 24hrs to response to your request</span>
+                <span>Hello {{ user.username }}, Kindly note that it might take upto 24hrs to response to your request</span>
               </div>
               
             </a>
@@ -566,12 +571,12 @@
                   <p
                     class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400"
                   >
-                    Total point
+                    Total Kilo
                   </p>
                   <p
                     class="text-lg font-semibold text-gray-700 dark:text-gray-200"
                   >
-                    {{ total_points }}
+                    {{ total_points }} Kg
                   </p>
                 </div>
               </div>
@@ -590,12 +595,12 @@
                   <p
                     class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400"
                   >
-                    Nylon
+                    Available for Withdrawal
                   </p>
                   <p
                     class="text-lg font-semibold text-gray-700 dark:text-gray-200"
                   >
-                    {{ total_requests.Nylon }}
+                    # {{ total_fund }}
                   </p>
                 </div>
               </div>
@@ -614,12 +619,12 @@
                   <p
                     class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400"
                   >
-                    Plastic
+                    Total Withdraw
                   </p>
                   <p
                     class="text-lg font-semibold text-gray-700 dark:text-gray-200"
                   >
-                    {{ total_requests.Plastic }}
+                    # {{ withdrawn }}
                   </p>
                 </div>
               </div>
@@ -638,12 +643,12 @@
                   <p
                     class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400"
                   >
-                    Bottle
+                    Total Fund
                   </p>
                   <p
                     class="text-lg font-semibold text-gray-700 dark:text-gray-200"
                   >
-                    {{ total_requests.Bottle }}
+                    # {{ fund }}
                   </p>
                 </div>
               </div>
@@ -720,14 +725,14 @@
                 class="grid px-4 py-3 text-xs font-semibold tracking-wide text-gray-500 uppercase border-t dark:border-gray-700 bg-gray-50 sm:grid-cols-9 dark:text-gray-400 dark:bg-gray-800"
               >
                 <span class="flex items-center col-span-3">
-                  Showing All Results
+                  {{ total_requests.Nylon }} Nylon(s), {{ total_requests.Bottle }} Bottle(s), {{ total_requests.Plastic }} plastic(s)
                 </span>
                 <span class="col-span-2"></span>
                 <!-- Pagination -->
               </div>
             </div>
 
-            <!-- Charts -->
+            {% comment %} <!-- Charts -->
             <h2 id="make_request"
               class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200"
             >
@@ -738,9 +743,11 @@
                 <form method="POST" action="{% url 'dashboard' %}">
                     {% csrf_token %}
                     {{ form.as_p }}
+
                     <button id="req-sub" type="submit">Send</button>
                 </form>
-            </div>
+
+            </div> {% endcomment %}
             <br>
           </div>
         </main>

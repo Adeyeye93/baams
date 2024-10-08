@@ -38,6 +38,8 @@ class FundRequest(models.Model):
         ("AirTel Data", "AirTel Data"),
         ("9Mobile Data", "9Mobile Data"),
     ]
-    withdraw_type = MultiSelectField(choices=CHOICES, max_choices=2, max_length=100, default="")
+    withdraw_type = models.CharField(choices=CHOICES,  max_length=100, default="")
     request_date = models.DateTimeField(auto_now_add=True)
     disbursed = models.BooleanField(default=False)
+    amount = models.IntegerField(null=True, blank=True)
+
