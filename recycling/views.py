@@ -1,23 +1,13 @@
 from django.shortcuts import render, redirect
 from .models import TrashRequest
 from django.contrib.auth.decorators import login_required
-from .forms import TrashRequestForm
+from .forms import TrashRequestForm, FundRequestForm
 
 def home(req):
     return render(req, 'recycling/index.html')
 
 @login_required
 def make_trash_request(request):
-    if request.method == 'POST':
-        form = TrashRequestForm(request.POST)
-        if form.is_valid():
-            trash_request = form.save(commit=False)
-            trash_request.user = request.user
-            trash_request.save()
-            return redirect('dashboard')  
-    else:
-        form = TrashRequestForm()
-
     user = request.user
     trash_requests = TrashRequest.objects.filter(user=user)
     all_trash = TrashRequest.objects.all()
@@ -32,19 +22,32 @@ def make_trash_request(request):
     withdrawn = sum(trash_request.withdrawn_fund for trash_request in trash_requests if trash_request.withdrawn_fund is not None)
     total_fund = fund - withdrawn
 
-    return render(request, 'recycling/dashboard.html', {'form': form, 'total_requests': total_requests, "total_points": total_points, 'total_weight': total_weight, "all_trash": trash_requests, "withdrawn": withdrawn, "total_fund": total_fund, "fund": fund})
+    return render(request, 'recycling/dashboard.html', {'total_requests': total_requests, "total_points": total_points, 'total_weight': total_weight, "all_trash": trash_requests, "withdrawn": withdrawn, "total_fund": total_fund, "fund": fund})
 
 @login_required
 def request(request):
     if request.method == 'POST':
-        form = TrashRequestForm(request.POST)
-        if form.is_valid():
-            trash_request = form.save(commit=False)
-            trash_request.user = request.user
-            trash_request.save()
-            return redirect('request')  
+        if 'submit_trash_request' in request.POST:
+            trash_form = TrashRequestForm(request.POST)
+            fund_form = FundRequestForm() 
+
+            if trash_form.is_valid():
+                trash_request = trash_form.save(commit=False)
+                trash_request.user = request.user
+                trash_request.save()
+                return redirect('dashboard')
+
+        elif 'submit_fund_request' in request.POST:
+            fund_form = FundRequestForm(request.POST)
+            trash_form = TrashRequestForm() 
+            if fund_form.is_valid():
+                fund_request = fund_form.save(commit=False)
+                fund_request.user = request.user
+                fund_request.save()
+                return redirect('dashboard')
     else:
-        form = TrashRequestForm()
+        trash_form = TrashRequestForm()
+        fund_form = FundRequestForm()
 
     user = request.user
     trash_requests = TrashRequest.objects.filter(user=user)
@@ -60,7 +63,8 @@ def request(request):
     withdrawn = sum(trash_request.withdrawn_fund for trash_request in trash_requests if trash_request.withdrawn_fund is not None)
     total_fund = fund - withdrawn
 
-    return render(request, 'recycling/request.html', {'form': form, 'total_requests': total_requests, "total_points": total_points, 'total_weight': total_weight, "all_trash": trash_requests, "withdrawn": withdrawn, "total_fund": total_fund, "fund": fund})
+    return render(request, 'recycling/request.html', {'trash_form': trash_form,
+        'fund_form': fund_form, 'total_requests': total_requests, "total_points": total_points, 'total_weight': total_weight, "all_trash": trash_requests, "withdrawn": withdrawn, "total_fund": total_fund, "fund": fund})
 
 def impact(req):
     

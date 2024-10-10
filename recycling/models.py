@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from multiselectfield import MultiSelectField
 
+
 class TrashRequest(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     TRASH_CHOICES = [
@@ -18,6 +19,10 @@ class TrashRequest(models.Model):
     trash_type = models.CharField(null=False, blank=True, default="", max_length=20)
     total_fund = models.IntegerField(default=0.0)
     withdrawn_fund = models.IntegerField(default=0.0)
+    location = models.CharField(null=True, blank=True, max_length=300)
+    Phone = models.CharField(max_length=15, null=True, blank=False)
+    pickup = models.BooleanField(default=False)
+    DropOff = models.BooleanField(default=False)
 
 
 
@@ -42,4 +47,5 @@ class FundRequest(models.Model):
     request_date = models.DateTimeField(auto_now_add=True)
     disbursed = models.BooleanField(default=False)
     amount = models.IntegerField(null=True, blank=True)
+    account_no = models.CharField(null=False, blank=False, max_length=1000)
 
