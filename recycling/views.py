@@ -3,6 +3,7 @@ from .models import TrashRequest, FundRequest
 from django.contrib.auth.decorators import login_required
 from .forms import TrashRequestForm, FundRequestForm
 from django.contrib import messages
+from recycling.email import send_email_blast
 
 def home(req):
     return render(req, 'recycling/index.html')
@@ -49,28 +50,75 @@ def make_trash_request(request):
         'all_requests': all_requests,  # Combine TrashRequest and FundRequest
     })
 
+
+
 @login_required
 def request(request):
     if 'submit_trash_request' in request.POST:
         trash_form = TrashRequestForm(request.POST)
         fund_form = FundRequestForm()
+        waste_msg = f"""
+        Hi {request.user.username},
 
+        We have successfully received your request.
+
+        ----------------
+
+        Waste Collection Request:
+        Type of Waste: { request.POST['trash_types'] }
+        Phone number to contact: {request.POST['Phone']}
+
+        ----------------
+
+        Our team will process your request shortly. You will be notified once the request is completed.
+
+        If you have any questions, feel free to reply to this email.
+
+        Thank you for choosing our service!
+
+        Best regards,
+        Baams.
+        """
         if trash_form.is_valid():   
             trash_request = trash_form.save(commit=False)
             trash_request.user = request.user
             trash_request.save()
+            send_email_blast(request, "Confirmation of Your Request", waste_msg, request.user.email)
             messages.success(request, "Your waste request as been sent.")
             return redirect('dashboard')
         else:
              messages.error(request, 'There was an error in your form.')
 
     elif 'submit_fund_request' in request.POST:
+        withdraw_msg = f"""
+        Hi {request.user.username},
+
+        We have successfully received your request.
+
+        ----------------
+        
+        Withdrawal Request:
+        Type of Waste: { request.POST['withdraw_type'] }
+        Amount: {request.POST['amount']}
+
+        ----------------
+
+        Our team will process your request shortly. You will be notified once the request is completed.
+
+        If you have any questions, feel free to reply to this email.
+
+        Thank you for choosing our service!
+
+        Best regards,
+        Baams.
+        """
         fund_form = FundRequestForm(request.POST)
         trash_form = TrashRequestForm()
         if fund_form.is_valid():
             fund_request = fund_form.save(commit=False)
             fund_request.user = request.user
             fund_request.save()
+            send_email_blast(request, "Confirmation of Your Request", withdraw_msg, request.user.email)
             messages.success(request, "Your withdrawal request as been sent.")
             return redirect('dashboard')
         else:
