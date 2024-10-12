@@ -40,8 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'recycling.apps.RecyclingConfig',
     'users.apps.UsersConfig',
-    'multiselectfield'
-    
+    'multiselectfield',    
 ]
 
 MIDDLEWARE = [
@@ -90,6 +89,7 @@ DATABASES = {
     }
 }
 
+AUTH_USER_MODEL = 'users.CustomUser'
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators

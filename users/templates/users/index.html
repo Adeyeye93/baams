@@ -33,7 +33,7 @@
 			<div class="wrap-login100">
 				<form class="login100-form validate-form p-l-55 p-r-55 p-t-178" method="post">
 					<span class="login100-form-title">
-						Welcome | Signup
+						Welcome | Register
 					</span>
 					{% csrf_token %}
 					<div class="wrap-input100 validate-input m-b-16" data-validate="Please enter username">
@@ -46,25 +46,29 @@
 						<span class="focus-input100"></span>
 					</div>
 
-					<div class="wrap-input100 validate-input" data-validate = "Please enter password">
-						<input class="input100" type="password" name="pass" placeholder="Password" required>
+					<div class="wrap-input100 validate-input" data-validate = "Please enter password" style="position: relative;">
+						<input class="input100" type="password" name="pass" placeholder="Password" id="password" required>
 						<span class="focus-input100"></span>
+						<button type="button" id="togglePassword" style="position: absolute; top: 25%; right: 10%;">
+							<span>Show</span>
+						</button>
+
 					</div>
 					<br/>
 					<br/>
 					<div class="container-login100-form-btn">
 						<button class="login100-form-btn">
-							Sign in
+							Register
 						</button>
 					</div>
 
 					<div class="flex-col-c p-t-170 p-b-40">
 						<span class="txt1 p-b-9">
-							Don’t have an account?
+							Already have an account?
 						</span>
 
-						<a href="#" class="txt3">
-							Sign up now
+						<a href="{% url "login" %}" class="txt3">
+							Sign in
 						</a>
 					</div>
 				</form>
@@ -73,4 +77,17 @@
 	</div>
 
 </body>
+<script>
+	const togglePassword = document.querySelector("#togglePassword");
+	const passwordInput = document.querySelector("#password");
+
+	togglePassword.addEventListener("click", function () {
+		// Toggle the type attribute of the password field
+		const type = passwordInput.getAttribute("type") === "password" ? "text" : "password";
+		passwordInput.setAttribute("type", type);
+
+		// Toggle the button text or icon (Show/Hide)
+		this.textContent = type === "password" ? "Show" : "Hide";
+	});
+</script>
 </html>

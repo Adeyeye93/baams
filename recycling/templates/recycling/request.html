@@ -10,6 +10,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="{% static 'recycling/css/tailwind.output.css' %}" />
+    <link rel="stylesheet" href="{% static 'recycling/css/custom.css' %}" />
     <script
       src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"
       defer
@@ -25,239 +26,6 @@
     ></script>
     <script src="{% static 'recycling/js/charts-lines.js' %}" defer></script>
     <script src="{% static 'recycling/js/charts-pie.js' %}" defer></script>
-    <style>
-      #id_trash_types
-      {
-        display: flex;
-        align-items: center;
-        justify-content: space-evenly;
-        width: 100%;
-        height: 5rem;
-        border-radius: 3px;
-        box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-        margin-bottom: 20px;
-      }
-#id_trash_types > div > label {
-  font-size: 14px;  /* Adjust font size as needed */
-  position: relative;
-  display: flex;  /* Flexbox for alignment */
-  align-items: center;
-  width: auto;
-  gap: 10px;  /* Adds space between text and slider */
-}
-
-/* Hide default HTML checkbox */
-#id_trash_types > div > label input {
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
-
-/* The slider */
-.slider {
-  position: relative;
-  display: inline-block;
-  width: 3.5em;
-  height: 2em;
-  background: black;
-  border-radius: 50px;
-  cursor: pointer;
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-.slider:before {
-  position: absolute;
-  content: "";
-  height: 2em;
-  width: 2em;
-  left: 0;
-  top: 0;
-  background-color: white;
-  border-radius: 50px;
-  {% comment %} box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4); {% endcomment %}
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
-}
-
-/* Input checked styles */
-#id_trash_types > div > label input:checked + .slider {
-  background: lime;
-}
-
-
-#id_trash_types > div > label input:checked + .slider:before {
-  transform: translateX(1.6em);
-}
-label[for="id_trash_type"] {
- opacity: 0;
-}
-/* From Uiverse.io by Galahhad */ 
-/* checkbox settings 👇 */
-
-.comLeb {
-  --primary-color: #1677ff;
-  --secondary-color: #fff;
-  --primary-hover-color: #4096ff;
-  /* checkbox */
-  --checkbox-diameter: 20px;
-  --checkbox-border-radius: 5px;
-  --checkbox-border-color: #d9d9d9;
-  --checkbox-border-width: 1px;
-  --checkbox-border-style: solid;
-  /* checkmark */
-  --checkmark-size: 1.2;
-}
-
-.comLeb, 
-.comLeb *, 
-.comLeb *::before, 
-.comLeb *::after {
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-}
-
-.comLeb {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  width: var(--checkbox-diameter);
-  height: var(--checkbox-diameter);
-  border-radius: var(--checkbox-border-radius);
-  background: var(--secondary-color);
-  border: var(--checkbox-border-width) var(--checkbox-border-style) var(--checkbox-border-color);
-  -webkit-transition: all 0.3s;
-  -o-transition: all 0.3s;
-  transition: all 0.3s;
-  cursor: pointer;
-  position: relative;
-}
-
-.comLeb::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  -webkit-box-shadow: 0 0 0 calc(var(--checkbox-diameter) / 2.5) var(--primary-color);
-  box-shadow: 0 0 0 calc(var(--checkbox-diameter) / 2.5) var(--primary-color);
-  border-radius: inherit;
-  opacity: 0;
-  -webkit-transition: all 0.5s cubic-bezier(0.12, 0.4, 0.29, 1.46);
-  -o-transition: all 0.5s cubic-bezier(0.12, 0.4, 0.29, 1.46);
-  transition: all 0.5s cubic-bezier(0.12, 0.4, 0.29, 1.46);
-}
-
-.comLeb::before {
-  top: 40%;
-  left: 50%;
-  content: "";
-  position: absolute;
-  width: 4px;
-  height: 7px;
-  border-right: 2px solid var(--secondary-color);
-  border-bottom: 2px solid var(--secondary-color);
-  -webkit-transform: translate(-50%, -50%) rotate(45deg) scale(0);
-  -ms-transform: translate(-50%, -50%) rotate(45deg) scale(0);
-  transform: translate(-50%, -50%) rotate(45deg) scale(0);
-  opacity: 0;
-  -webkit-transition: all 0.1s cubic-bezier(0.71, -0.46, 0.88, 0.6),opacity 0.1s;
-  -o-transition: all 0.1s cubic-bezier(0.71, -0.46, 0.88, 0.6),opacity 0.1s;
-  transition: all 0.1s cubic-bezier(0.71, -0.46, 0.88, 0.6),opacity 0.1s;
-}
-
-/* actions */
-
-.comLeb:hover {
-  border-color: var(--primary-color);
-}
-
-.comLeb:checked {
-  background: var(--primary-color);
-  border-color: transparent;
-}
-
-.comLeb:checked::before {
-  opacity: 1;
-  -webkit-transform: translate(-50%, -50%) rotate(45deg) scale(var(--checkmark-size));
-  -ms-transform: translate(-50%, -50%) rotate(45deg) scale(var(--checkmark-size));
-  transform: translate(-50%, -50%) rotate(45deg) scale(var(--checkmark-size));
-  -webkit-transition: all 0.2s cubic-bezier(0.12, 0.4, 0.29, 1.46) 0.1s;
-  -o-transition: all 0.2s cubic-bezier(0.12, 0.4, 0.29, 1.46) 0.1s;
-  transition: all 0.2s cubic-bezier(0.12, 0.4, 0.29, 1.46) 0.1s;
-}
-
-.comLeb:active:not(:checked)::after {
-  -webkit-transition: none;
-  -o-transition: none;
-  -webkit-box-shadow: none;
-  box-shadow: none;
-  transition: none;
-  opacity: 1;
-}  
-/* Style the last two <li> elements */
-#trash_form p:nth-last-child(2),
-#trash_form p:nth-last-child(3) {
-  margin: 20px;
-  
-}
-select {
-   -webkit-appearance:none;
-   -moz-appearance:none;
-   -ms-appearance:none;
-   appearance:none;
-   outline:0;
-   box-shadow:none;
-   border:0!important;
-   background: #5c6664;
-   background-image: none;
-   flex: 1;
-   padding: 0 .5em;
-   color:#fff;
-   cursor:pointer;
-   font-size: 1em;
-   font-family: 'Open Sans', sans-serif;
-}
-select::-ms-expand {
-   display: none;
-}
-#fund_form p:nth-last-child(4) {
-   position: relative;
-   display: flex;
-   width: 20em;
-   height: 3em;
-   line-height: 3;
-   background: #5c6664;
-   overflow: hidden;
-   border-radius: .25em;
-}
-#fund_form p:nth-last-child(4)::after {
-   content: '\25BC';
-   position: absolute;
-   top: 0;
-   right: 0;
-   padding: 0 1em;
-   background: #2b2e2e;
-   cursor:pointer;
-   pointer-events:none;
-   transition:.25s all ease;
-}
-#fund_form p:nth-last-child(4):hover::after {
-   color: #23b499;
-}
-#fund_form p:nth-last-child(4) > label
-{
-  display: none;
-}
-#fund_form
-{
-  display: flex;
-  align-items: start;
-  justify-content: space-evenly;
-  flex-direction: column;
-  height: 20rem;
-}
-</style>
     </head>
   <body>
     <script>
@@ -754,7 +522,7 @@ select::-ms-expand {
                     d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
                   ></path>
                 </svg>
-                <span>Hello {{ user.username }}, Kindly note that it might take upto 24hrs to response to your request</span>
+                <span>Hello {{ user.username }}, kindly note that it might take upto 24hrs to response to your request</span>
               </div>
               
             </a>
@@ -775,12 +543,12 @@ select::-ms-expand {
                   <p
                     class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400"
                   >
-                    Total Kilo
+                    Total weigth
                   </p>
                   <p
                     class="text-lg font-semibold text-gray-700 dark:text-gray-200"
                   >
-                    {{ total_points }} Kg
+                    {{ total_weight }} Kg
                   </p>
                 </div>
               </div>
@@ -799,12 +567,12 @@ select::-ms-expand {
                   <p
                     class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400"
                   >
-                    Available for Withdrawal
+                    Total earning
                   </p>
                   <p
                     class="text-lg font-semibold text-gray-700 dark:text-gray-200"
                   >
-                    # {{ total_fund }}
+                    <img src="{% static 'recycling/images/naira.png' %}" style="display: inline;" /> {{ total_earned  }}
                   </p>
                 </div>
               </div>
@@ -823,12 +591,12 @@ select::-ms-expand {
                   <p
                     class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400"
                   >
-                    Total Withdraw
+                    Available for Withdraw
                   </p>
                   <p
                     class="text-lg font-semibold text-gray-700 dark:text-gray-200"
                   >
-                    # {{ withdrawn }}
+                    <img src="{% static 'recycling/images/naira.png' %}" style="display: inline;" /> {{ available_fund }}
                   </p>
                 </div>
               </div>
@@ -847,12 +615,12 @@ select::-ms-expand {
                   <p
                     class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400"
                   >
-                    Total Fund
+                    Total withdrawn
                   </p>
                   <p
                     class="text-lg font-semibold text-gray-700 dark:text-gray-200"
                   >
-                    <svg id="Layer_1" class="text-lg w-10 h-10 font-semibold text-gray-700 dark:text-gray-200" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 115.09 122.88"><title>nigeria-naira</title><path d="M13.42,0H32.1a1.25,1.25,0,0,1,1,.6L58,42.26H83.17v-41A1.23,1.23,0,0,1,84.39,0h17.28a1.23,1.23,0,0,1,1.23,1.23v41h11a1.23,1.23,0,0,1,1.23,1.23V54.55a1.23,1.23,0,0,1-1.23,1.23h-11v9.41h11a1.23,1.23,0,0,1,1.23,1.22V77.48a1.23,1.23,0,0,1-1.23,1.22h-11v43a1.23,1.23,0,0,1-1.23,1.23H84.39a1.25,1.25,0,0,1-1-.6L58,78.7H33.26v43A1.23,1.23,0,0,1,32,122.88H13.42a1.23,1.23,0,0,1-1.23-1.23V78.7h-11A1.23,1.23,0,0,1,0,77.48V66.41a1.23,1.23,0,0,1,1.23-1.22h11V55.78h-11A1.23,1.23,0,0,1,0,54.55V43.49a1.23,1.23,0,0,1,1.23-1.23h11v-41A1.23,1.23,0,0,1,13.42,0ZM33.26,55.78v9.41h17l-4.4-9.41ZM70,65.19H83.17V55.78H65.68L70,65.19ZM83.17,78.7H77.88l5.29,11v-11ZM33.26,32.76v9.5h4.57l-4.57-9.5Z"/></svg> {{ fund }}
+                  <img src="{% static 'recycling/images/naira.png' %}" style="display: inline;" /> {{ withdrawn_fund }}
                   </p>
                 </div>
               </div>
@@ -901,8 +669,53 @@ select::-ms-expand {
                 <p>
                    <form method="POST" action="{% url 'request' %}" id="fund_form">
                     {% csrf_token %}
-                    {{ fund_form.as_p }}
-                    <button type="submit" name="submit_fund_request" class="rounded-lg bg-blue-600 px-3 py-1 text-slate-200 hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-300">Submit Fund Request</button>
+                    {% comment %} {{ fund_form.as_p }} {% endcomment %}
+                    <div class="form-field" id="withdraw_type">
+                          <label for="{{ fund_form.withdraw_type.id_for_label }}">withdraw type:</label>
+                          {{ fund_form.withdraw_type }}
+                      </div>
+                      <div class="form-field" id="data_choice">
+                          <label for="{{ fund_form.data_choice.id_for_label }}">data_choice:</label>
+                         {{ fund_form.data_choice }}
+                      </div>
+                      <div class="form-field" id="airtime_choice">
+                          <label for="{{ fund_form.airtime_choice.id_for_label }}">airtime_choice:</label>
+                         {{ fund_form.airtime_choice }}
+                      </div>
+                      <div class="form-field" id="school_choice">
+                          <label for="{{ fund_form.school_choice.id_for_label }}">school_choice:</label>
+                         {{ fund_form.school_choice }}
+                      </div>
+                      <div class="form-field" id="health_choice">
+                          <label for="{{ fund_form.health_choice.id_for_label }}">health_choice:</label>
+                         {{ fund_form.health_choice }}
+                      </div>
+                      <div class="form-field">
+                          <label for="{{ fund_form.amount.id_for_label }}">amount:</label>
+                         {{ fund_form.amount }}
+                      </div>
+                       <div class="form-field" id="account_no">
+                          <label for="{{ fund_form.account_no.id_for_label }}">account no:</label>
+                         {{ fund_form.account_no }}
+                      </div>
+                      <div class="form-field" id="Phone">
+                          <label for="{{ fund_form.Phone.id_for_label }}">Phone:</label>
+                         {{ fund_form.Phone }}
+                      </div>
+                      <div class="form-field" id="account_name">
+                          <label for="{{ fund_form.account_name.id_for_label }}">account name:</label>
+                         {{ fund_form.account_name }}
+                      </div> 
+                       <div class="form-field" id="bank">
+                          <label for="{{ fund_form.bank.id_for_label }}">bank:</label>
+                         {{ fund_form.bank }}
+                      </div>
+                       <div class="form-field" id="others">
+                          <label for="{{ fund_form.bank.id_for_label }}">others:</label>
+                         {{ fund_form.others }}
+                      </div>
+
+                    <button type="submit" name="submit_fund_request" class="rounded-lg bg-blue-600 px-3 py-1 text-slate-900 hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-300">Submit Fund Request</button>
                 </form>
                 </p>
               </div>
@@ -951,6 +764,135 @@ labels2.forEach(label => {
     label.classList.add('comLeb');  // Add the same class for both labels
   }
 });
+
+const checkbox1 = document.querySelector("#id_pickup");
+const checkbox2 = document.querySelector("#id_DropOff");
+const location2 = document.querySelector("#trash_form > p:nth-child(8)");
+const phone = document.querySelector("#trash_form > p:nth-child(9)");
+
+location2.style.display = 'none'
+// Function to ensure only one checkbox can be selected at a time
+checkbox1.addEventListener("change", function() {
+  if (this.checked) {
+    checkbox2.checked = false;
+    location2.style.display = 'block'
+  }
+});
+
+checkbox2.addEventListener("change", function() {
+  if (this.checked) {
+    checkbox1.checked = false;
+    location2.style.display = 'none'
+  }
+});
+
+    // Get references to all fields
+    const withdrawType = document.getElementById('withdraw_type');
+    const amountField = document.getElementById('amount');
+    const accountNoField = document.getElementById('account_no');
+    const phoneField = document.getElementById('Phone');
+    const accountNameField = document.getElementById('account_name');
+    const dataChoiceField = document.getElementById('data_choice');
+    const airtimeChoiceField = document.getElementById('airtime_choice');
+    const schoolChoiceField = document.getElementById('school_choice');
+    const healthChoiceField = document.getElementById('health_choice');
+    const bankField = document.getElementById('bank');
+    const othersField = document.getElementById('others');
+
+    // Hide all fields except withdraw_type and amount initially
+    hideAllFields();
+     const selectElements = document.querySelectorAll('select');
+
+    // Loop through each select element and disable the first option
+    selectElements.forEach(function (select) {
+        if (select.options.length > 0) {
+            select.options[0].disabled = true;
+        }
+    });
+    // Show the necessary fields based on the selected withdraw_type
+    withdrawType.querySelector('select').addEventListener('change', function (event) {
+        const selectedValue = event.target.value;
+        hideAllFields();
+
+        // Show specific fields based on the selected withdraw_type
+        switch (selectedValue) {
+            case 'School':
+                accountNoField.style.display = 'block';
+                accountNameField.style.display = 'block';
+                bankField.style.display = 'block';
+                schoolChoiceField.style.display = 'block';
+                break;
+            case 'Health':
+                accountNoField.style.display = 'block';
+                accountNameField.style.display = 'block';
+                bankField.style.display = 'block';
+                healthChoiceField.style.display = 'block';
+                break;
+            case 'EcoFashion':
+                accountNoField.style.display = 'block';
+                accountNameField.style.display = 'block';
+                bankField.style.display = 'block';
+                break;
+            case 'Data':
+                dataChoiceField.style.display = 'block';
+                phoneField.style.display = 'block';
+                break;
+            case 'Airtime':
+                airtimeChoiceField.style.display = 'block';
+                phoneField.style.display = 'block';
+                break;
+            case 'others':
+                othersField.style.display = 'block';
+                accountNoField.style.display = 'block';
+                accountNameField.style.display = 'block';
+                bankField.style.display = 'block'; // Show "others" input if "Other" is selected
+                break;
+            default:
+                // No action needed for other cases, all hidden by default
+                break;
+        }
+
+        // Listen to the school_choice selection change
+    if (schoolChoiceField) {
+        const schoolChoiceSelect = schoolChoiceField.querySelector('select');
+        if (schoolChoiceSelect) {
+            schoolChoiceSelect.addEventListener('change', function (event) {
+                const selectedValue = event.target.value;
+                if (selectedValue === 'others') {
+                    othersField.style.display = 'block';; // Show "others" input if "Other" is selected in school_choice
+                } else {
+                    othersField.style.display = 'none';
+                }
+            });
+        }
+    }
+    if (healthChoiceField) {
+        const healthChoiceSelect = healthChoiceField.querySelector('select');
+        if (healthChoiceSelect) {
+            healthChoiceSelect.addEventListener('change', function (event) {
+                const selectedValue = event.target.value;
+                if (selectedValue === 'others') {
+                    othersField.style.display = 'block';; // Show "others" input if "Other" is selected in school_choice
+                } else {
+                    othersField.style.display = 'none';
+                }
+            });
+        }
+    }
+    });
+
+    
+    function hideAllFields() {
+        accountNoField.style.display = 'none';
+        phoneField.style.display = 'none';
+        accountNameField.style.display = 'none';
+        dataChoiceField.style.display = 'none';
+        airtimeChoiceField.style.display = 'none';
+        schoolChoiceField.style.display = 'none';
+        healthChoiceField.style.display = 'none';
+        bankField.style.display = 'none';
+        othersField.style.display = 'none'; // Hide others field initially
+    }
 
   </script>
 </html>

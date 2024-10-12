@@ -5,14 +5,14 @@ input_class = 'w-full rounded-lg border border-slate-300 bg-slate-50 p-3 text-sm
 class TrashRequestForm(forms.ModelForm):
     class Meta:
         model = TrashRequest
-        fields = ['trash_type', 'trash_types', 'location', 'Phone', 'pickup', 'DropOff']
+        fields = ['trash_type', 'trash_types', 'pickup', 'DropOff', 'location', 'Phone']
         widgets = {
             'location': forms.TextInput(attrs={
             'placeholder': 'Your Address: 123ab Street city state',
             'class': input_class
             }),
             'Phone': forms.TextInput(attrs={
-            'placeholder': 'Enter the Phone No. to Contact regarding the Request.',
+            'placeholder': 'Enter the Available Contact for pickup',
             'class': input_class
             }),
             
@@ -23,7 +23,7 @@ class TrashRequestForm(forms.ModelForm):
 class FundRequestForm(forms.ModelForm):
     class Meta:
         model = FundRequest
-        fields = ['withdraw_type', 'amount', 'account_no']
+        fields = ['withdraw_type', 'amount', 'account_no', 'data_choice', 'airtime_choice', 'school_choice', 'health_choice', 'bank', "Phone", 'account_name', "others"]
         widgets = {
             'amount': forms.TextInput(attrs={
             'placeholder': 'Withdrawal Amount',
@@ -33,5 +33,21 @@ class FundRequestForm(forms.ModelForm):
             'placeholder': 'Your Account no.',
             'class': input_class
             }),
+            'Phone': forms.TextInput(attrs={
+                'placeholder': 'Phone Number', 
+                'class': input_class
+            }),
+            'account_name': forms.TextInput(attrs={
+                'placeholder': 'Account Name', 
+                'class': input_class
+            }),
+            'bank': forms.TextInput(attrs={
+                'placeholder': 'Your bank', 
+                'class': input_class
+            }),
+            'others': forms.TextInput(attrs={
+                'placeholder': 'Your Reason for withdrawing', 
+                'class': input_class
+            })
         }
 

@@ -1,0 +1,257 @@
+      #id_trash_types
+      {
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        width: 100%;
+        height: 5rem;
+        border-radius: 3px;
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+        margin-bottom: 20px;
+      }
+#id_trash_types > div > label {
+  font-size: 14px;  /* Adjust font size as needed */
+  position: relative;
+  display: flex;  /* Flexbox for alignment */
+  align-items: center;
+  width: auto;
+  gap: 10px;  /* Adds space between text and slider */
+}
+
+/* Hide default HTML checkbox */
+#id_trash_types > div > label input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: relative;
+  display: inline-block;
+  width: 3.5em;
+  height: 2em;
+  background: black;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 2em;
+  width: 2em;
+  left: 0;
+  top: 0;
+  background-color: white;
+  border-radius: 50px;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+}
+
+/* Input checked styles */
+#id_trash_types > div > label input:checked + .slider {
+  background: lime;
+}
+
+
+#id_trash_types > div > label input:checked + .slider:before {
+  transform: translateX(1.6em);
+}
+label[for="id_trash_type"] {
+ opacity: 0;
+}
+/* From Uiverse.io by Galahhad */ 
+/* checkbox settings 👇 */
+
+.comLeb {
+  --primary-color: #1677ff;
+  --secondary-color: #fff;
+  --primary-hover-color: #4096ff;
+  /* checkbox */
+  --checkbox-diameter: 20px;
+  --checkbox-border-radius: 5px;
+  --checkbox-border-color: #d9d9d9;
+  --checkbox-border-width: 1px;
+  --checkbox-border-style: solid;
+  /* checkmark */
+  --checkmark-size: 1.2;
+}
+
+.comLeb, 
+.comLeb *, 
+.comLeb *::before, 
+.comLeb *::after {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.comLeb {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: var(--checkbox-diameter);
+  height: var(--checkbox-diameter);
+  border-radius: var(--checkbox-border-radius);
+  background: var(--secondary-color);
+  border: var(--checkbox-border-width) var(--checkbox-border-style) var(--checkbox-border-color);
+  -webkit-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
+  cursor: pointer;
+  position: relative;
+}
+
+.comLeb::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  -webkit-box-shadow: 0 0 0 calc(var(--checkbox-diameter) / 2.5) var(--primary-color);
+  box-shadow: 0 0 0 calc(var(--checkbox-diameter) / 2.5) var(--primary-color);
+  border-radius: inherit;
+  opacity: 0;
+  -webkit-transition: all 0.5s cubic-bezier(0.12, 0.4, 0.29, 1.46);
+  -o-transition: all 0.5s cubic-bezier(0.12, 0.4, 0.29, 1.46);
+  transition: all 0.5s cubic-bezier(0.12, 0.4, 0.29, 1.46);
+}
+
+.comLeb::before {
+  top: 40%;
+  left: 50%;
+  content: "";
+  position: absolute;
+  width: 4px;
+  height: 7px;
+  border-right: 2px solid var(--secondary-color);
+  border-bottom: 2px solid var(--secondary-color);
+  -webkit-transform: translate(-50%, -50%) rotate(45deg) scale(0);
+  -ms-transform: translate(-50%, -50%) rotate(45deg) scale(0);
+  transform: translate(-50%, -50%) rotate(45deg) scale(0);
+  opacity: 0;
+  -webkit-transition: all 0.1s cubic-bezier(0.71, -0.46, 0.88, 0.6),opacity 0.1s;
+  -o-transition: all 0.1s cubic-bezier(0.71, -0.46, 0.88, 0.6),opacity 0.1s;
+  transition: all 0.1s cubic-bezier(0.71, -0.46, 0.88, 0.6),opacity 0.1s;
+}
+
+/* actions */
+
+.comLeb:hover {
+  border-color: var(--primary-color);
+}
+
+.comLeb:checked {
+  background: var(--primary-color);
+  border-color: transparent;
+}
+
+.comLeb:checked::before {
+  opacity: 1;
+  -webkit-transform: translate(-50%, -50%) rotate(45deg) scale(var(--checkmark-size));
+  -ms-transform: translate(-50%, -50%) rotate(45deg) scale(var(--checkmark-size));
+  transform: translate(-50%, -50%) rotate(45deg) scale(var(--checkmark-size));
+  -webkit-transition: all 0.2s cubic-bezier(0.12, 0.4, 0.29, 1.46) 0.1s;
+  -o-transition: all 0.2s cubic-bezier(0.12, 0.4, 0.29, 1.46) 0.1s;
+  transition: all 0.2s cubic-bezier(0.12, 0.4, 0.29, 1.46) 0.1s;
+}
+
+.comLeb:active:not(:checked)::after {
+  -webkit-transition: none;
+  -o-transition: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  transition: none;
+  opacity: 1;
+}  
+/* Style the last two <li> elements */
+#trash_form p:nth-last-child(2),
+#trash_form p:nth-last-child(3) {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  
+}
+select {
+   -webkit-appearance:none;
+   -moz-appearance:none;
+   -ms-appearance:none;
+   appearance:none;
+   outline:0;
+   box-shadow:none;
+   border:0!important;
+   background: #5c6664;
+   background-image: none;
+   flex: 1;
+   padding: 0 .5em;
+   color:#fff;
+   cursor:pointer;
+   font-size: 1em;
+   font-family: 'Open Sans', sans-serif;
+}
+select::-ms-expand {
+   display: none;
+}
+ #withdraw_type,
+ #data_choice, 
+ #airtime_choice,
+ #school_choice,
+ #health_choice
+  {
+   position: relative;
+   display: flex;
+   width: 20em;
+   height: 3em;
+   line-height: 3;
+   background: #5c6664;
+   overflow: hidden;
+   border-radius: .25em;
+}
+ #withdraw_type::after,
+ #data_choice::after, 
+ #airtime_choice::after,
+ #school_choice::after,
+ #health_choice::after
+  {
+   content: '\25BC';
+   position: absolute;
+   top: 0;
+   right: 0;
+   padding: 0 1em;
+   background: #2b2e2e;
+   cursor:pointer;
+   pointer-events:none;
+   transition:.25s all ease;
+}
+ #withdraw_type:hover::after,
+ #data_choice:hover::after, 
+ #airtime_choice:hover::after,
+ #school_choice:hover::after,
+ #health_choice:hover::after
+ {
+   color: #23b499;
+}
+ #withdraw_type > label, 
+ #data_choice  > label, 
+ #airtime_choice  > label,
+ #school_choice  > label,
+ #health_choice  > label
+{
+  display: none;
+}
+#fund_form
+{
+  display: flex;
+  align-items: start;
+  justify-content: space-evenly;
+  flex-direction: column;
+}
+.form-field
+{
+  margin-bottom: 20px;
+}
+#account_no, #Phone, #account_name, #data_choice, #airtime_choice, 
+#school_choice, #health_choice, #bank, #others {
+    display: none;
+}
