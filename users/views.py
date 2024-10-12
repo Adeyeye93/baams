@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, redirect
 from django.contrib.auth import authenticate, login as auth_login
-from django.contrib.auth.models import User
+from users.models import CustomUser as User
 from django.contrib import messages
 
 def sign_up(req):
