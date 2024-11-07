@@ -20,7 +20,11 @@
       <!-- Custom styles for this template -->
       <link href="{% static 'recycling/css/style.css' %}" rel="stylesheet" />
       <!-- responsive style -->
-      <link href="{% static 'recycling/css/responsive.css' %}" rel="stylesheet" />   </head>
+      <link href="{% static 'recycling/css/responsive.css' %}" rel="stylesheet" />  
+      <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet" />
+    <!-- <link rel="stylesheet" href="./assets/styles/styles.css" /> -->
+    <script defer src="https://unpkg.com/alpinejs@3.2.3/dist/cdn.min.js"></script>
+    </head>
    <body class="sub_page">
       <div class="hero_area">
          <!-- header section strats -->
@@ -36,16 +40,12 @@
                         <li class="nav-item">
                            <a class="nav-link" href="{% url "Recycles" %}">Home <span class="sr-only">(current)</span></a>
                         </li>
-                        <li class="nav-item dropdown active">
-                           <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true"> <span class="nav-label">learn <span class="caret"></span></a>
-                           <ul class="dropdown-menu">
-                              <li><a href="{% url "about" %}">About</a></li>
-                              <li><a href="{% url "faq" %}">FAQ</a></li>
-                              <li><a href="{% url "media" %}">Media</a></li>
-                           </ul>
-                        </li>
                         <li class="nav-item">
-                           <a class="nav-link" href="{% url "Recycles" %}">EcoBaams fashion</a>
+                           <a class="nav-link" href="{% url "about" %}">About</a>
+                        </li>
+                       
+                        <li class="nav-item">
+                           <a class="nav-link" href="{% url "faq" %}">faq</a>
                         </li>
                         <li class="nav-item">
                            <a class="nav-link" href="{% url "impact" %}">Impacts</a>
@@ -74,6 +74,61 @@
          </div>
       </section>
       <!-- end inner page section -->
+           <section class="py-14 lg:py-24 relative">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative ">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-9">
+                <div class="img-box">
+                    <img src="https://pagedone.io/asset/uploads/1702034769.png" alt="About Us"
+                        class="max-lg:mx-auto object-cover">
+                </div>
+                <div class="lg:pl-[100px] flex items-center">
+                    <div class="data w-full">
+                        <h2
+                            class="font-manrope font-bold text-4xl lg:text-5xl text-black mb-9 max-lg:text-center relative">
+                            About
+                            Us </h2>
+                        <p class="font-normal text-xl leading-8 text-gray-500 max-lg:text-center max-w-2xl mx-auto">
+                            Driven by a passion for seamless user experiences, we've meticulously curated pagedone
+                            to empower creators, designers, and developers alike. Our mission is to provide a
+                            comprehensive toolkit,
+                            enabling you to build intuitive, beautiful interfaces that resonate with users on every
+                            interaction.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   <section class="py-14 lg:py-24 relative">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative ">
+            <div class="grid grid-cols-1 lg:grid-cols-2 lg:gap-9 ">
+
+                <div class="lg:pr-24 flex items-center">
+                    <div class="data w-full">
+                        <img src="https://pagedone.io/asset/uploads/1702034785.png" alt="About Us tailwind page"
+                            class="block lg:hidden mb-9 mx-auto object-cover">
+                        <h2 class="font-manrope font-bold text-4xl lg:text-5xl text-black mb-9 max-lg:text-center">We
+                            are Creative Since 2005</h2>
+                        <p class="font-normal text-xl leading-8 text-gray-500 max-lg:text-center max-w-2xl mx-auto">
+                            Pagedone isn’t just a collection of components and guidelines; it's a philosophy. We go
+                            beyond aesthetics, prioritizing accessibility, scalability, and usability. Every element,
+                            from the tiniest
+                            detail to the grandest layout, is meticulously crafted to enhance functionality and elevate
+                            user
+                            satisfaction.
+                        </p>
+                    </div>
+                </div>
+                <div class="img-box ">
+                    <img src="https://pagedone.io/asset/uploads/1702034785.png" alt="About Us tailwind page"
+                        class="hidden lg:block object-cover">
+                </div>
+            </div>
+        </div>
+    </section>
+
+
       <!-- why section -->
       <section class="why_section layout_padding">
          <div class="container">
@@ -147,14 +202,11 @@ We organize community cleanups to maintain safe and healthy environment for resi
                   <div class="col-md-6 ml-auto">
                      <div class="heading_container remove_line_bt">
                         <h2>
-                           #Learn more 
+                           About 
                         </h2>
                      </div>
                      <p style="margin-top: 20px;margin-bottom: 30px;">
-We organize community cleanups to maintain safe and healthy environment for residents. Plastic wastes collected during these programs are also recycled into eco friendly fashion products.
-<br>
-We empower women and youths in underserved communities with eco-friendly craft skills to help them thrive and reduce unemployment in Nigeria. <br>
-Through advocacy and youth engagement actions, we sensitize women in Highly polluted communities on effective waste management methods. 
+                           Ecodams Africa is a green tech enterprise that helps unemployed youth & low-income households monetize their plastic wastes to enhance good living. Through our trash-to-earn platform, indigent students, unemployed youth, and low-income households can access basic educational needs, basic healthcare, and daily necessities (food, transportation, energy) by transacting with their plastic waste in their community. Hence, helping to build a healthier and wealthier community & planet in Nigeria.
 
                      </p>
                      <a href="">

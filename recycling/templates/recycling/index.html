@@ -21,7 +21,9 @@
       <link href="{% static 'recycling/css/style.css' %}" rel="stylesheet" />
       <!-- responsive style -->
       <link href="{% static 'recycling/css/responsive.css' %}" rel="stylesheet" />
-      
+      <style>
+        
+      </style>
    </head>
    <body>
           <script>
@@ -58,16 +60,12 @@
                         <li class="nav-item active">
                            <a class="nav-link" href="{% url "Recycles" %}">Recycling<span class="sr-only">(current)</span></a>
                         </li>
-                       <li class="nav-item dropdown">
-                           <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true"> <span class="nav-label">learn <span class="caret"></span></a>
-                           <ul class="dropdown-menu">
-                              <li><a href="{% url "about" %}">About</a></li>
-                              <li><a href="{% url "faq" %}">FAQ</a></li>
-                              <li><a href="{% url "media" %}">Media</a></li>
-                           </ul>
-                        </li>
                         <li class="nav-item">
-                           <a class="nav-link" href="{% url "Recycles" %}">EcoBaams fashion</a>
+                           <a class="nav-link" href="{% url "about" %}">About</a>
+                        </li>
+                       
+                        <li class="nav-item">
+                           <a class="nav-link" href="{% url "faq" %}">Faq</a>
                         </li>
                         <li class="nav-item">
                            <a class="nav-link" href="{% url "impact" %}">Impacts</a>
@@ -443,10 +441,10 @@
                      </div>
                      <div class="detail-box">
                         <h5>
-                           Waste nylons
+                           Packaging Nylon wastes
                         </h5>
                         <h6>
-                          points
+                          #200 per kg
                         </h6>
                      </div>
                   </div>
@@ -465,10 +463,10 @@
                      </div>
                      <div class="detail-box">
                         <h5>
-                           Bottles
+                           PET bottles
                         </h5>
                         <h6>
-                           points
+                           #200 per kg
                         </h6>
                      </div>
                   </div>
@@ -487,10 +485,10 @@
                      </div>
                      <div class="detail-box">
                         <h5>
-                           plastic wastes
+                           Other Plastics <br> <small>(water packs, bottles packs)</small>
                         </h5>
                         <h6>
-                           points
+                           #200 per kg
                         </h6>
                      </div>
                   </div>
@@ -507,7 +505,7 @@
                  Our collection <span>Programs</span>
                </h2>
             </div>
-            <div class="row">
+            <div class="row" style="justify-content: space-evenly">
                <div class="col-sm-6 col-md-4 col-lg-4">
                   <div class="box">
                      <div class="option_container">
@@ -552,32 +550,10 @@
                      </div>
                   </div>
                </div>
-               <div class="col-sm-6 col-md-4 col-lg-4">
-                  <div class="box">
-                     <div class="option_container">
-                        <div class="options">
-                           <a href="" class="option1">
-                           Learn more
-                           </a>
-                        </div>
-                     </div>
-                     <h5>
-                           Campus wastes pick up
-                        </h5>
-                     <div class="img-box">
-                        <img src="{% static "recycling/images/p10.png" %}" alt="">
-                     </div>
-                     <div class="detail-box">
-                        <p>
-                         We install fancy bins in semi-public premises for people to drop-off their recyclable wastes and routinely evacuate
-                        </p>
-                     </div>
-                  </div>
-               </div>
             </div>
             <div class="btn-box">
                <a href="">
-               Trash with us now
+               Start recycling now
                </a>
             </div>
          </div>
@@ -606,9 +582,9 @@
             </div>
          </div>
       </section>
-      <section class="subscribe_section">
-         <div class="container-fuild">
-            <img src="{% static "recycling/images/steps.png" %}" width="100%" style='height: 600px'/>
+      <section class="subscribe_section p-2">
+         <div class="container-fuild" style="display: flex; align-items: center; justify-content: space-evenly">
+            <img id="img-center" src="{% static "recycling/images/steps.png" %}" width="50%" style='height: 500px'/>
          </div>
       </section>
       <!-- end subscribe section -->

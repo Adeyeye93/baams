@@ -260,6 +260,7 @@ a:focus {
           align-items: center;
   position: relative;
   padding: 90px 0 75px 0;
+  
 }
 
 .slider_section .row {
@@ -312,6 +313,11 @@ a:focus {
 .slider_section .img-box img {
   width: 100%;
 }
+/* .row 
+{
+  align-items: center;
+  justify-content: space-evenly;
+} */
 
 .slider_section .carousel-indicators {
   position: unset;

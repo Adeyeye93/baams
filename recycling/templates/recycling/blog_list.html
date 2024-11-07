@@ -20,6 +20,10 @@
       <link href="{% static 'recycling/css/style.css' %}" rel="stylesheet" />
       <!-- responsive style -->
       <link href="{% static 'recycling/css/responsive.css' %}" rel="stylesheet" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet" />
+    <!-- <link rel="stylesheet" href="./assets/styles/styles.css" /> -->
+    <script defer src="https://unpkg.com/alpinejs@3.2.3/dist/cdn.min.js"></script>
    </head>
    <body class="sub_page">
       <div class="hero_area">
@@ -84,46 +88,36 @@
                  What are our impact
                </h2>
             </div>
-            <div class="row">
-               <div class="col-md-4">
-                  <div class="box ">
-                     <div class="img-box">
-                        <img width="100%" src="{% static "recycling/images/p14.png" %}"/>
-                     </div>
-                     <div class="detail-box">
-                        <h5>
-                           Empowered 80 youths and women with eco craft skill
-                        </h5>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-md-4">
-                  <div class="box ">
-                     <div class="img-box">
-                        <img width="100%" src="{% static "recycling/images/p15.png" %}" />
-                     </div>
-                     <div class="detail-box">
-                        <h5>
-                           Recycled over 10,000 plastic wastes 
-                        </h5>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-md-4">
-                  <div class="box ">
-                     <div class="img-box">
-                        <img width="100%" src="{% static "recycling/images/p16.png" %}" />
-                     </div>
-                     <div class="detail-box">
-                        <h5>
-                           Eco footprint 
-                        </h5>
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </section>
+            <section class="text-gray-600 body-font">
+  <div class="container px-5 py-24 mx-auto">
+    <div class="flex flex-wrap -m-4">
+      <div class="lg:w-1/3 lg:mb-0 mb-6 p-4">
+        <div class="h-full text-center">
+           <img alt="testimonial" class="w-20 h-20 mb-8 object-cover object-center rounded-full inline-block border-2 border-gray-200 bg-gray-100" src="{% static "recycling/images/hr2.png" %}">
+           <h1 class="text-gray-900 font-bold title-font tracking-wider text-sm">Social</h1>
+           <span class="inline-block h-1 w-10 rounded bg-indigo-500 mt-2 mb-1"></span>
+          <p class="leading-relaxed">Over 10 communities reached <br> 100 women and youths sensitized on EcoHealth</p>
+        </div>
+      </div>
+      <div class="lg:w-1/3 lg:mb-0 p-4">
+        <div class="h-full text-center">
+           <img alt="testimonial" class="w-20 h-20 mb-8 object-cover object-center rounded-full inline-block border-2 border-gray-200 bg-gray-100" src="{% static "recycling/images/recycle.png" %}">
+           <h1 class="text-gray-900 font-bold title-font tracking-wider text-sm">Environmental</h1>
+           <span class="inline-block h-1 w-10 rounded bg-indigo-500 mt-2 mb-1"></span>
+          <p class="leading-relaxed">Over 5Thousand plastics waste recycled</p>
+        </div>
+      </div>
+       <div class="lg:w-1/3 lg:mb-0 mb-6 p-4">
+         <div class="h-full text-center">
+            <img alt="testimonial" class="w-20 h-20 mb-8 object-cover object-center rounded-full inline-block border-2 border-gray-200 bg-gray-100" src="{% static "recycling/images/empowerment.png" %}">
+            <h1 class="text-gray-900 font-bold title-font tracking-wider text-sm">Economics</h1>
+            <span class="inline-block h-1 w-10 rounded bg-indigo-500 mt-2 mb-1"></span>
+          <p class="leading-relaxed"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
       <!-- end why section -->
 
       <section class="why_section layout_padding">

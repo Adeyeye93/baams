@@ -95,7 +95,12 @@
   }
 }
 
-@media (max-width: 420px) {}
+@media (max-width: 420px) {
+  .img-center{
+        width: 80%;
+        height: 200px;
+    }
+}
 
 @media (max-width: 376px) {
   .slider_section .detail-box h1 {
