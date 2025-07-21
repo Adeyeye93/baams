@@ -82,9 +82,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'postgres',
-        'USER': 'postgres.sgefgftxojniydhmiucm',
+        'USER': 'postgres.dvbgnrpvzfqqhkwfiiaj',
         'PASSWORD': 'S1e2y3i4@1029',
-        'HOST': 'aws-0-eu-central-1.pooler.supabase.com',  # or your PostgreSQL server IP
+        'HOST': 'aws-0-eu-north-1.pooler.supabase.com',  # or your PostgreSQL server IP
         'PORT': '6543',  # default PostgreSQL port
     }
 }
