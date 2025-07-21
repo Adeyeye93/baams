@@ -81,7 +81,7 @@ WSGI_APPLICATION = 'ecobaams.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'DATABASE': 'postgres',
+        'NAME': 'postgres',
         'USER': 'postgres',
         'PASSWORD': 'S1e2y3i4@1029',
         'HOST': 'db.dvbgnrpvzfqqhkwfiiaj.supabase.co',  # or your PostgreSQL server IP
