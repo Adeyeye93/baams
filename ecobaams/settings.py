@@ -81,11 +81,11 @@ WSGI_APPLICATION = 'ecobaams.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'postgres',
-        'USER': 'postgres.dvbgnrpvzfqqhkwfiiaj',
+        'DATABASE': 'postgres',
+        'USER': 'postgres',
         'PASSWORD': 'S1e2y3i4@1029',
-        'HOST': 'aws-0-eu-north-1.pooler.supabase.com',  # or your PostgreSQL server IP
-        'PORT': '6543',  # default PostgreSQL port
+        'HOST': 'db.dvbgnrpvzfqqhkwfiiaj.supabase.co',  # or your PostgreSQL server IP
+        'PORT': '5432',  # default PostgreSQL port
     }
 }
 
