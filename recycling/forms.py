@@ -12,7 +12,7 @@ class TrashRequestForm(forms.ModelForm):
             'class': input_class
             }),
             'Phone': forms.TextInput(attrs={
-            'placeholder': 'Enter the Available Contact for pickup',
+            'placeholder': 'Enter your Available Contact for pickup',
             'class': input_class
             }),
             
